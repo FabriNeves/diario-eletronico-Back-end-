@@ -22,3 +22,20 @@ import sequelize from "../config/configMySQL.js";
 
 // -> exporta esquemas 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

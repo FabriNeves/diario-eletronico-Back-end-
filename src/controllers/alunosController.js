@@ -1,26 +1,76 @@
-// Importar o esquema
+import { Aluno } from '../models/schema.js';
 
 class alunosController {
-    static read(req, res) {
-        res.send(`<h1>Método READ</h1>`);
+    static async read(req, res) {
+        try {
+            const alunos = await Aluno.findAll();
+            res.json(alunos);
+        } catch (error) {
+            res.status(500).send(error);
+        }
     }
 
-    static readById(req, res) {
-        res.send(`<h1>Método READ-BY-ID</h1>`);
+    static async readById(req, res) {
+        const { id } = req.params;
+        try {
+            const aluno = await Aluno.findOne({ where: { id } });
+            if (aluno) {
+                res.json(aluno);
+            } else {
+                res.status(404).send('Aluno não encontrado.');
+            }
+        } catch (error) {
+            res.status(500).send(error);
+        }
     }
 
-    static create(req, res) {
-        res.send(`<h1>Método CREATE</h1>`);
+    static async create(req, res) {
+        const novoAluno = req.body;
+        try {
+            const aluno = await Aluno.create(novoAluno);
+            res.json(aluno);
+        } catch (error) {
+            res.status(500).send(error);
+        }
     }
 
-    static update(req, res) {
-        res.send(`<h1>Método UPDATE</h1>`);
+    static async update(req, res) {
+        const { id } = req.params;
+        const atualizacoes = req.body;
+        console.log(atualizacoes);
+        try {
+            const aluno = await Aluno.findOne({ where: { id } });
+            if (aluno) {
+                if(atualizacoes){
+                    await aluno.update(atualizacoes);
+                    res.json(aluno);
+                }else{
+                    res.status(406).send("Atualização vazia.");
+                }                
+                
+            } else {
+                res.status(404).send('Aluno não encontrado.');
+            }
+        } catch (error) {
+            res.status(500).send(error);
+        }
     }
 
-    static delete(req, res) {
-        res.send(`<h1>Método DELETE</h1>`);
+    static async delete(req, res) {
+        const { id } = req.params;
+        try {
+            const aluno = await Aluno.findOne({ where: { id } });
+            if (aluno) {
+                await aluno.destroy();
+                res.send('Aluno deletado. :' + JSON.stringify(aluno));
+            } else {
+                res.status(404).send('Aluno não encontrado.');
+            }
+        } catch (error) {
+            res.status(500).send(error);
+        }
     }
 }
 
 export default alunosController;
-//  = > crudRoutes.js
+// -routes
