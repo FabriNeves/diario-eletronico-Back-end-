@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize";
 import sequelize from "../config/configMySQL.js";
 
-
+// Esquema alunos
  export const Aluno = sequelize.define('Alunos', {
   nome: Sequelize.STRING,
   genero: Sequelize.STRING,
@@ -12,7 +12,9 @@ import sequelize from "../config/configMySQL.js";
   situacaoFinal: Sequelize.STRING,
 });
 
- export const estabelecimento = sequelize.define("estabelecimento", {
+
+// Esquema Estabelecimento 
+ export const Estabelecimento = sequelize.define("Estabelecimento", {
   nomeEstabelecimento: Sequelize.STRING,
   turno: Sequelize.STRING,
   endereço: Sequelize.STRING,
