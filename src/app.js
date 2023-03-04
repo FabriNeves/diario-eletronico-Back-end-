@@ -3,8 +3,8 @@ import sequelize from './config/configMySQL.js';
 
 import express from "express";
 import alunosController  from "./controllers/alunosController.js";
-import  estabController from "./controllers/estabController.js";
-const identificador = "aluno";
+import  estabelecimentoController from "./controllers/estabController.js";
+
 
 sequelize.authenticate().then(() => {
     console.log("Conectado com sucesso!");
@@ -15,8 +15,8 @@ sequelize.authenticate().then(() => {
 const app = express();
 app.use(express.json())
 
-
 // Rotas alunos 
+let identificador = "aluno";
 app.get(`/${identificador}Read`, alunosController.read);
 app.get(`/${identificador}Read/:id`, alunosController.readById);
 app.post(`/${identificador}Create`, alunosController.create);
@@ -25,11 +25,12 @@ app.delete(`/${identificador}Delete/:id`, alunosController.delete);
 
 
 //Rotas estabelecimento
-app.get(`/${identificador}Read`, estabController.read);
-app.get(`/${identificador}Read/:id`, estabController.readById);
-app.post(`/${identificador}Create`, estabController.create);
-app.put(`/${identificador}Update/:id`, estabController.update);
-app.delete(`/${identificador}Delete/:id`, estabController.delete);
+identificador = "estab";
+app.get(`/${identificador}Read`, estabelecimentoController.read);
+app.get(`/${identificador}Read/:id`, estabelecimentoController.readById);
+app.post(`/${identificador}Create`, estabelecimentoController.create);
+app.put(`/${identificador}Update/:id`, estabelecimentoController.update);
+app.delete(`/${identificador}Delete/:id`, estabelecimentoController.delete);
 
 
 export default app;

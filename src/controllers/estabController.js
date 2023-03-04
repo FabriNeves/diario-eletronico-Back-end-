@@ -72,5 +72,5 @@ class estabelecimentoController {
     }
 }
 
-export default estabController;
+export default estabelecimentoController;
 // -routes
