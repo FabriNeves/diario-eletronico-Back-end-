@@ -1,26 +1,26 @@
 import express from "express";
 import alunosController from "../controllers/alunosController.js";
 
-const router = express.Router();
+const AlunosRouter = express.Router();
 
-router.post("/cadastroAlunos", (req, res) => {
+AlunosRouter.post("/cadastroAlunos", (req, res) => {
     alunosController.create(req, res);
 });
 
-router.get("/cadastroAlunos", (req, res) => {
+AlunosRouter.get("/cadastroAlunos", (req, res) => {
     alunosController.read(req, res);
 });
 
-router.put("/cadastroAlunos/:id", (req, res) => {
+AlunosRouter.put("/cadastroAlunos/:id", (req, res) => {
     alunosController.update(req, res);
 });
 
-router.delete("/cadastroAlunos/:id", (req, res) => {
+AlunosRouter.delete("/cadastroAlunos/:id", (req, res) => {
     alunosController.delete(req, res);
 });
 
-router.get("/cadastroAlunos/:id", (req, res) => {
+AlunosRouter.get("/cadastroAlunos/:id", (req, res) => {
     alunosController.readById(req, res);
 });
 
-export default router;
+export default AlunosRouter;

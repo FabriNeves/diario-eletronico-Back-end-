@@ -4,6 +4,7 @@ import sequelize from './config/configMySQL.js';
 import express from "express";
 import alunosController  from "./controllers/alunosController.js";
 import  estabelecimentoController from "./controllers/estabController.js";
+import AlunosRouter from './routes/alunosRoutes.js';
 
 
 sequelize.authenticate().then(() => {
@@ -15,22 +16,25 @@ sequelize.authenticate().then(() => {
 const app = express();
 app.use(express.json())
 
+app.use(AlunosRouter);
+// router(app);
+
 // Rotas alunos 
-let identificador = "aluno";
-app.get(`/${identificador}Read`, alunosController.read);
-app.get(`/${identificador}Read/:id`, alunosController.readById);
-app.post(`/${identificador}Create`, alunosController.create);
-app.put(`/${identificador}Update/:id`, alunosController.update);
-app.delete(`/${identificador}Delete/:id`, alunosController.delete);
+// let identificador = "aluno";
+// app.get(`/${identificador}Read`, alunosController.read);
+// app.get(`/${identificador}Read/:id`, alunosController.readById);
+// app.post(`/${identificador}Create`, alunosController.create);
+// app.put(`/${identificador}Update/:id`, alunosController.update);
+// app.delete(`/${identificador}Delete/:id`, alunosController.delete);
 
 
 //Rotas estabelecimento
-identificador = "estab";
-app.get(`/${identificador}Read`, estabelecimentoController.read);
-app.get(`/${identificador}Read/:id`, estabelecimentoController.readById);
-app.post(`/${identificador}Create`, estabelecimentoController.create);
-app.put(`/${identificador}Update/:id`, estabelecimentoController.update);
-app.delete(`/${identificador}Delete/:id`, estabelecimentoController.delete);
+// identificador = "estab";
+// app.get(`/${identificador}Read`, estabelecimentoController.read);
+// app.get(`/${identificador}Read/:id`, estabelecimentoController.readById);
+// app.post(`/${identificador}Create`, estabelecimentoController.create);
+// app.put(`/${identificador}Update/:id`, estabelecimentoController.update);
+// app.delete(`/${identificador}Delete/:id`, estabelecimentoController.delete);
 
 
 export default app;
