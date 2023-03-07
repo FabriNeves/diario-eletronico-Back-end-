@@ -6,7 +6,7 @@ const nomeRota = "cadastroEstab";
 
 estabelecimentoRouter.route(`/${nomeRota}`)
   .post(estabelecimentoController.create)
-  .get(estabelecimentoController);
+  .get(estabelecimentoController.read);
 
 estabelecimentoRouter.route(`/${nomeRota}/:id`)
   .get(estabelecimentoController.readById)

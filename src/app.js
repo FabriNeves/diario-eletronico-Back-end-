@@ -2,9 +2,8 @@ import sequelize from './config/configMySQL.js';
 
 
 import express from "express";
-import alunosController  from "./controllers/alunosController.js";
-import  estabelecimentoController from "./controllers/estabController.js";
 import AlunosRouter from './routes/alunosRoutes.js';
+import estabelecimentoRouter from './routes/estabelecimentoRoutes.js';
 
 
 sequelize.authenticate().then(() => {
@@ -17,6 +16,7 @@ const app = express();
 app.use(express.json())
 
 app.use(AlunosRouter);
+app.use(estabelecimentoRouter);
 // router(app);
 
 // Rotas alunos 
