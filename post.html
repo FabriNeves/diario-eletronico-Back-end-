@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Alunos</title>
+  </head>
+  <body>
+    <h1>Cadastro de Alunos</h1>
+    <form id="formAluno">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required>
+      <br>
+      <label for="genero">Gênero:</label>
+      <select id="genero" name="genero" required>
+        <option value="Masculino">Masculino</option>
+        <option value="Feminino">Feminino</option>
+        <option value="Outro">Outro</option>
+      </select>
+      <br>
+      <label for="dataDeNascimento">Data de Nascimento:</label>
+      <input type="date" id="dataDeNascimento" name="dataDeNascimento" required>
+      <br>
+      <label for="idade">Idade:</label>
+      <input type="number" id="idade" name="idade" required>
+      <br>
+      <label for="disciplina">Disciplina:</label>
+      <input type="text" id="disciplina" name="disciplina" required>
+      <br>
+      <label for="nota">Nota:</label>
+      <input type="number" id="nota" name="nota" step="0.1" min="0" max="10" required>
+      <br>
+      <label for="situacaoFinal">Situação Final:</label>
+      <select id="situacaoFinal" name="situacaoFinal" required>
+        <option value="Aprovado">Aprovado</option>
+        <option value="Reprovado">Reprovado</option>
+        <option value="Em Recuperação">Em Recuperação</option>
+      </select>
+      <br><br>
+      <input type="submit" value="Enviar">
+    </form>
+    
+    <script>
+        console.log("Enviando...");
+      const form = document.querySelector('#formAluno');
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const data = {
+          nome: form.nome.value,
+          genero: form.genero.value,
+          dataDeNascimento: form.dataDeNascimento.value,
+          idade: parseInt(form.idade.value),
+          disciplina: form.disciplina.value,
+          nota: parseFloat(form.nota.value),
+          situacaoFinal: form.situacaoFinal.value
+        };
+        const response = await fetch('http://localhost:3000/cadastroAlunos/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+        const result = await response.json();
+        console.log(result);
+      });
+    </script>
+  </body>
+</html>
