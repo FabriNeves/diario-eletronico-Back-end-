@@ -22,7 +22,7 @@ import sequelize from "../config/configMySQL.js";
   ano: Sequelize.INTEGER,
 })
 
-// -> exporta esquemas 
+
 
 
 

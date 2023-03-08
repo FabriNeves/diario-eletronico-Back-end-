@@ -3,24 +3,15 @@ import alunosController from "../controllers/alunosController.js";
 
 const AlunosRouter = express.Router();
 
-AlunosRouter.post("/cadastroAlunos", (req, res) => {
-    alunosController.create(req, res);
-});
+const nomeRota = "cadastroAlunos";
 
-AlunosRouter.get("/cadastroAlunos", (req, res) => {
-    alunosController.read(req, res);
-});
+AlunosRouter.route(`/${nomeRota}`)
+  .post(alunosController.create)
+  .get(alunosController.read);
 
-AlunosRouter.put("/cadastroAlunos/:id", (req, res) => {
-    alunosController.update(req, res);
-});
-
-AlunosRouter.delete("/cadastroAlunos/:id", (req, res) => {
-    alunosController.delete(req, res);
-});
-
-AlunosRouter.get("/cadastroAlunos/:id", (req, res) => {
-    alunosController.readById(req, res);
-});
+AlunosRouter.route(`/${nomeRota}/:id`)
+  .put(alunosController.update)
+  .delete(alunosController.delete)
+  .get(alunosController.readById);
 
 export default AlunosRouter;
