@@ -52,9 +52,9 @@
           nome: form.nome.value,
           genero: form.genero.value,
           dataDeNascimento: form.dataDeNascimento.value,
-          idade: form.idade.value,
+          idade: parseInt(form.idade.value),
           disciplina: form.disciplina.value,
-          nota: form.nota.value,
+          nota: parseFloat(form.nota.value),
           situacaoFinal: form.situacaoFinal.value
         };
         console.table(data);

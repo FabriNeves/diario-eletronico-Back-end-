@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    width: 640px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.aluno {
+    background-color: #f9f9f9dc;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.aluno p {
+    padding-left: 5px;
+    font-size: 12px;
+    margin: 10px 0;
+    display: inline;
+}
+
+.aluno button {
+    display: block;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.aluno button:hover {
+    background-color: #c82333;
+}

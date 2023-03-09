@@ -42,13 +42,13 @@ class alunosController {
         try {
             const aluno = await Aluno.findOne({ where: { id } });
             if (aluno) {
-                if(atualizacoes){
+                if (atualizacoes) {
                     await aluno.update(atualizacoes);
                     res.json(aluno);
-                }else{
+                } else {
                     res.status(406).send("Atualização vazia.");
-                }                
-                
+                }
+
             } else {
                 res.status(404).send('Aluno não encontrado.');
             }
