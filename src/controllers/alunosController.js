@@ -26,6 +26,7 @@ class alunosController {
 
     static async create(req, res) {
         const novoAluno = req.body;
+        console.log(req.body);
         try {
             const aluno = await Aluno.create(novoAluno);
             res.json(aluno);

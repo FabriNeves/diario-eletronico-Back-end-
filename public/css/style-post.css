@@ -1,0 +1,44 @@
+/* Define uma fonte padrão para o corpo da página */
+body {
+    width: 640px;
+    margin: auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Centraliza o título na página */
+  h1 {
+    text-align: center;
+  }
+  
+  /* Define um estilo básico para os rótulos dos campos do formulário */
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  /* Define um estilo básico para os campos de entrada do formulário */
+  input, select {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Define um estilo para o botão de envio */
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  /* Define um estilo para o botão de envio quando o mouse estiver sobre ele */
+  input[type="submit"]:hover {
+    background-color: #2E8B57;
+  }
+  

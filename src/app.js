@@ -2,6 +2,8 @@ import sequelize from './config/configMySQL.js';
 import express from "express";
 import AlunosRouter from './routes/alunosRoutes.js';
 import estabelecimentoRouter from './routes/estabelecimentoRoutes.js';
+import cors from 'cors';
+
 
 // Verifica conexão com o banco mysql
 sequelize.authenticate().then(() => {
@@ -14,6 +16,10 @@ sequelize.authenticate().then(() => {
 const app = express();
 // add o middleware Json
 app.use(express.json())
+// Habilitar CORS
+app.use(cors({
+    origin: '*'
+  }));
 // Add rotas 
 app.use(AlunosRouter);
 app.use(estabelecimentoRouter);

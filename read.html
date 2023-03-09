@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Alunos</title>
+  </head>
+  <body>
+    <h1>Cadastro de Alunos</h1>
+    <div id="alunos"></div>
+    <script>
+      async function loadAlunos() {
+        const response = await fetch('http://localhost:3000/cadastroAlunos/');
+        const alunos = await response.json();
+        const alunosDiv = document.getElementById('alunos');
+        alunos.forEach(aluno => {
+          const alunoDiv = document.createElement('div');
+          alunoDiv.innerHTML = `
+            <p>Nome: ${aluno.nome}</p>
+            <p>Gênero: ${aluno.genero}</p>
+            <p>Data de Nascimento: ${aluno.dataDeNascimento}</p>
+            <p>Idade: ${aluno.idade}</p>
+            <p>Disciplina: ${aluno.disciplina}</p>
+            <p>Nota: ${aluno.nota}</p>
+            <p>Situação Final: ${aluno.situacaoFinal}</p>
+            <button onclick="deleteAluno(${aluno.id})">Excluir</button>
+          `;
+          alunosDiv.appendChild(alunoDiv);
+        });
+      }
+
+      async function deleteAluno(id) {
+        const response = await fetch(`http://localhost:3000/cadastroAlunos/${id}`, {
+          method: 'DELETE'
+        });
+        const result = await response.json();
+        console.log(result);
+        location.reload(); // recarrega a página para atualizar a lista de alunos
+      }
+
+      loadAlunos();
+    </script>
+  </body>
+</html>

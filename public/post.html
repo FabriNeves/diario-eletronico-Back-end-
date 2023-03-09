@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Cadastro de Alunos</title>
+    <link rel="stylesheet" type="text/css" href="./css/style-post.css">
   </head>
   <body>
     <h1>Cadastro de Alunos</h1>
@@ -42,17 +43,22 @@
     <script>
         console.log("Enviando...");
       const form = document.querySelector('#formAluno');
+
       form.addEventListener('submit', async (event) => {
+        //Previne reload da pagina; 
         event.preventDefault();
+        //Cria o Objeto literal data;
         const data = {
           nome: form.nome.value,
           genero: form.genero.value,
           dataDeNascimento: form.dataDeNascimento.value,
-          idade: parseInt(form.idade.value),
+          idade: form.idade.value,
           disciplina: form.disciplina.value,
-          nota: parseFloat(form.nota.value),
+          nota: form.nota.value,
           situacaoFinal: form.situacaoFinal.value
         };
+        console.table(data);
+        // Executa um fetch para o localhost:3000/cadastroAlunos/
         const response = await fetch('http://localhost:3000/cadastroAlunos/', {
           method: 'POST',
           headers: {
@@ -61,7 +67,8 @@
           body: JSON.stringify(data)
         });
         const result = await response.json();
-        console.log(result);
+
+        alert(JSON.stringify(result));
       });
     </script>
   </body>
