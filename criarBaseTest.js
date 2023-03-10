@@ -8,21 +8,27 @@ sequelize.authenticate().then(() => {
     console.log("Falha ao se conectar:", erro);
 });
 
+// Estabelecimento.sync({force:true});
+// Aluno.sync({force:true});
 
-Estabelecimento.sync({force:true});
-Aluno.sync({force:true});
+sequelize.sync({ force: true })
+  .then(() => {
+    console.log('Tabelas sincronizadas');
+  });
 
 
 
-Aluno.create({
-    nome: "Albert Einstein",
-    genero: "Masculino",
-    dataDeNascimento: "1879-03-14",
-    idade: 143,
-    disciplina: "Física",
-    nota: 9.5,
-    situacaoFinal: "Aprovado",
-});
+
+
+// Aluno.create({
+//     nome: "Albert Einstein",
+//     genero: "Masculino",
+//     dataDeNascimento: "1879-03-14",
+//     idade: 143,
+//     disciplina: "Física",
+//     nota: 9.5,
+//     situacaoFinal: "Aprovado",
+// });
 
 // Estabelecimento.create({
 //     nomeEstabelecimento:"Nome do Local",
