@@ -17,7 +17,7 @@ import sequelize from "../config/configMySQL.js";
  export const Estabelecimento = sequelize.define("Estabelecimento", {
   nomeEstabelecimento: Sequelize.STRING,
   turno: Sequelize.STRING,
-  endereço: Sequelize.STRING,
+  endereco: Sequelize.STRING,
   area: Sequelize.STRING,
   ano: Sequelize.INTEGER,
 })

@@ -5,8 +5,9 @@ const estabelecimentoRouter = express.Router();
 const nomeRota = "cadastroEstab";
 
 estabelecimentoRouter.route(`/${nomeRota}`)
-  .post(estabelecimentoController.create)
-  .get(estabelecimentoController.read);
+  .get(estabelecimentoController.read)
+  .post(estabelecimentoController.create);
+
 
 estabelecimentoRouter.route(`/${nomeRota}/:id`)
   .get(estabelecimentoController.readById)
