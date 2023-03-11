@@ -10,6 +10,23 @@ class alunosController {
         }
     }
 
+    static async find(req,res){
+       
+        const Escola = req.query.escola;
+        const Nome = req.query.nome;
+      
+        // faça algo com os parâmetros
+      
+        res.send('Parâmetros recebidos: Escola = ' + Escola + ', Nome = ' + Nome);
+        // try {
+        //     const alunos = await Aluno.findAll();
+        //     res.json(alunos);
+        // } catch (error) {
+        //     res.status(500).send(error);
+        // }
+        
+    }
+
     static async readById(req, res) {
         const { id } = req.params;
         try {

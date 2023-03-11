@@ -8,6 +8,9 @@ const nomeRota = "cadastroAlunos";
 AlunosRouter.route(`/${nomeRota}`)
   .post(alunosController.create)
   .get(alunosController.read);
+  
+AlunosRouter.route(`/${nomeRota}/busca`)
+  .get(alunosController.find);
 
 AlunosRouter.route(`/${nomeRota}/:id`)
   .put(alunosController.update)
