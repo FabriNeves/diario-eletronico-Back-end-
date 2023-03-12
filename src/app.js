@@ -26,14 +26,14 @@ app.use(estabelecimentoRouter);
 
 //http://exemplo.com/api/produtos?categoria=eletronicos&preco_maximo=1000
 
-app.get('/api/produtos', (req, res) => {
-    const categoria = req.query.categoria;
-    const precoMaximo = req.query.preco_maximo;
+// app.get('/api/produtos', (req, res) => {
+//     const categoria = req.query.categoria;
+//     const precoMaximo = req.query.preco_maximo;
   
-    // faça algo com os parâmetros
+//     // faça algo com os parâmetros
   
-    res.send('Parâmetros recebidos: categoria=' + categoria + ', preco_maximo=' + precoMaximo);
-  });
+//     res.send('Parâmetros recebidos: categoria = ' + categoria + ', preco_maximo = ' + precoMaximo);
+//   });
 
 
 export default app;

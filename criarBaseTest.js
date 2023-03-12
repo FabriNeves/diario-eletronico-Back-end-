@@ -8,18 +8,157 @@ sequelize.authenticate().then(() => {
     console.log("Falha ao se conectar:", erro);
 });
 
-// Estabelecimento.sync({force:true});
-// Aluno.sync({force:true});
+// sequelize.drop()
+//   .then(() => console.log('Todas as tabelas foram removidas com sucesso!'))
+//   .catch((error) => console.log(`Erro ao remover as tabelas: ${error}`));
 
-sequelize.sync({ force: true })
-  .then(() => {
-    console.log('Tabelas sincronizadas');
+
+await sequelize.sync({ force: true });
+
+
+
+const escolaA = await Estabelecimento.create({
+  nomeEstabelecimento: "Escola Municipal Francisco Xavier",
+  turno: "Manhã",
+  endereco: "Rua Maranhão, 100, São Paulo - SP",
+  area: "Urbana",
+  ano: "2023"
+  });
+  
+  const escolaB = await Estabelecimento.create({
+  nomeEstabelecimento: "Colégio São José",
+  turno: "Integral",
+  endereco: "Avenida das Flores, 500, Belo Horizonte - MG",
+  area: "Urbana",
+  ano: "2023"
+  });
+  
+  const escolaC = await Estabelecimento.create({
+  nomeEstabelecimento: "Escola Estadual José de Alencar",
+  turno: "Tarde",
+  endereco: "Rua Paraná, 1000, Curitiba - PR",
+  area: "Urbana",
+  ano: "2023"
+  });
+  
+  const escolaD = await Estabelecimento.create({
+  nomeEstabelecimento: "Colégio Santa Maria",
+  turno: "Manhã",
+  endereco: "Rua dos Girassóis, 200, Rio de Janeiro - RJ",
+  area: "Urbana",
+  ano: "2023"
+  });
+  
+  const escolaE = await Estabelecimento.create({
+  nomeEstabelecimento: "Escola Municipal Monteiro Lobato",
+  turno: "Manhã",
+  endereco: "Rua das Margaridas, 300, São Paulo - SP",
+  area: "Urbana",
+  ano: "2023"
+  });
+  
+  const ana = await Aluno.create({
+  nome: "Ana Silva",
+  genero: "Feminino",
+  dataDeNascimento: "2008-05-10",
+  idade: 14,
+  disciplina: "Matemática",
+  nota: 8.5,
+  situacaoFinal: "Aprovado",
+  idEstabelecimento: escolaA.id
+  });
+  
+  const pedro = await Aluno.create({
+  nome: "Pedro Santos",
+  genero: "Masculino",
+  dataDeNascimento: "2005-07-18",
+  idade: 16,
+  disciplina: "História",
+  nota: 7.5,
+  situacaoFinal: "Aprovado",
+  idEstabelecimento: escolaA.id
+  });
+  
+  const maria = await Aluno.create({
+  nome: "Maria Oliveira",
+  genero: "Feminino",
+  dataDeNascimento: "2007-11-28",
+  idade: 14,
+  disciplina: "Geografia",
+  nota: 9.0,
+  situacaoFinal: "Aprovado",
+  idEstabelecimento: escolaC.id
+  });
+  
+  const joao = await Aluno.create({
+  nome: "João Silva",
+  genero: "Masculino",
+  dataDeNascimento: "2006-02-15",
+  idade: 16,
+  disciplina: "Química",
+  nota: 8.0,
+  situacaoFinal: "Aprovado",
+  idEstabelecimento: escolaD.id
   });
 
+  
+const joana = await Aluno.create({
+  nome: "Joana Oliveira",
+  genero: "Feminino",
+  dataDeNascimento: "2007-11-28",
+  idade: 14,
+  disciplina: "Geografia",
+  nota: 9.0,
+  situacaoFinal: "Aprovado",
+  idEstabelecimento: escolaB.id
+});
+
+const lucas = await Aluno.create({
+  nome: "Lucas Silva",
+  genero: "Masculino",
+  dataDeNascimento: "2006-02-15",
+  idade: 16,
+  disciplina: "Química",
+  nota: 8.0,
+  situacaoFinal: "Aprovado",
+  idEstabelecimento: escolaB.id
+});
+
+const julia = await Aluno.create({
+  nome: "Julia Oliveira",
+  genero: "Feminino",
+  dataDeNascimento: "2007-11-28",
+  idade: 14,
+  disciplina: "Geografia",
+  nota: 9.0,
+  situacaoFinal: "Aprovado",
+  idEstabelecimento: escolaE.id
+});
+
+const guilherme = await Aluno.create({
+  nome: "Guilherme Silva",
+  genero: "Masculino",
+  dataDeNascimento: "2006-02-15",
+  idade: 16,
+  disciplina: "Química",
+  nota: 8.0,
+  situacaoFinal: "Aprovado",
+  idEstabelecimento: escolaE.id
+});
 
 
+// Aluno.create({
+//   nome: "Luiza Souza",
+//   genero: "Feminino",
+//   dataDeNascimento: "2009-09-02",
+//   idade: 12,
+//   disciplina: "Português",
+//   nota: 9.5,
+//   situacaoFinal: "Aprovado",
+//   nomeEstabelecimento:"Escola Municipal Monteiro Lobato"
+// });
 
-
+  
 // Aluno.create({
 //     nome: "Albert Einstein",
 //     genero: "Masculino",
