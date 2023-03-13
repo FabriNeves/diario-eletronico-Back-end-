@@ -1,4 +1,6 @@
 import { Aluno } from '../models/schema.js';
+import { Estabelecimento } from '../models/schema.js';
+import { Op } from "sequelize";
 
 class alunosController {
     static async read(req, res) {
@@ -10,22 +12,38 @@ class alunosController {
         }
     }
 
-    static async find(req,res){
-       
-        const Escola = req.query.escola;
-        const Nome = req.query.nome;
-      
-        // faça algo com os parâmetros
-      
-        res.send('Parâmetros recebidos: Escola = ' + Escola + ', Nome = ' + Nome);
-        // try {
-        //     const alunos = await Aluno.findAll();
-        //     res.json(alunos);
-        // } catch (error) {
-        //     res.status(500).send(error);
-        // }
-        
+    static async find(req, res) {
+        const { escola, nome, idade} = req.query;
+        //      Se         // Isso  : senão isso ;
+        const escolaBusca = escola + "%";
+        const nomeBusca = nome + "%";
+        const idadeBusca = idade + "%";
+
+        console.log("Buscando por : " + escola, nome, idade);
+        try {
+            const alunos = await Aluno.findAll({
+                include: [{
+                    model: Estabelecimento,
+                    where: {
+                        nomeEstabelecimento: {
+                            [Op.like]: escolaBusca
+                        }
+                    }
+                }],
+                where: {
+                    nome: {
+                        [Op.like]: nomeBusca
+                    }, idade: {
+                        [Op.like]: idadeBusca
+                    }
+                }
+            });
+            res.status(200).json(alunos);
+        } catch (err) {
+            res.status(500).json({ error: err.message });
+        }
     }
+
 
     static async readById(req, res) {
         const { id } = req.params;

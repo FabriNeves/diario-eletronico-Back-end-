@@ -3,8 +3,8 @@ import { Estabelecimento } from '../models/schema.js';
 class estabelecimentoController {
     static async read(req, res) {
         try {
-            const alunos = await Estabelecimento.findAll();
-            res.json(alunos);
+            const estabelecimentos = await Estabelecimento.findAll();
+            res.json(estabelecimentos);
         } catch (error) {
             res.status(500).send(error);
         }
@@ -13,9 +13,9 @@ class estabelecimentoController {
     static async readById(req, res) {
         const { id } = req.params;
         try {
-            const aluno = await Estabelecimento.findOne({ where: { id } });
-            if (aluno) {
-                res.json(aluno);
+            const estabelecimento = await Estabelecimento.findOne({ where: { id } });
+            if (estabelecimento) {
+                res.json(estabelecimento);
             } else {
                 res.status(404).send('Estabelecimento não encontrado.');
             }
@@ -27,8 +27,8 @@ class estabelecimentoController {
     static async create(req, res) {
         const novoEstabelecimento = req.body;
         try {
-            const aluno = await Estabelecimento.create(novoEstabelecimento);
-            res.json(aluno);
+            const estabelecimento = await Estabelecimento.create(novoEstabelecimento);
+            res.json(estabelecimento);
         } catch (error) {
             res.status(500).send(error);
         }
@@ -39,11 +39,11 @@ class estabelecimentoController {
         const atualizacoes = req.body;
         console.log(atualizacoes);
         try {
-            const aluno = await Estabelecimento.findOne({ where: { id } });
-            if (aluno) {
+            const estabelecimento = await Estabelecimento.findOne({ where: { id } });
+            if (estabelecimento) {
                 if(atualizacoes){
-                    await aluno.update(atualizacoes);
-                    res.json(aluno);
+                    await estabelecimento.update(atualizacoes);
+                    res.json(estabelecimento);
                 }else{
                     res.status(406).send("Atualização vazia.");
                 }                
@@ -59,10 +59,10 @@ class estabelecimentoController {
     static async delete(req, res) {
         const { id } = req.params;
         try {
-            const aluno = await Estabelecimento.findOne({ where: { id } });
-            if (aluno) {
-                await aluno.destroy();
-                res.send('Estabelecimento deletado. :' + JSON.stringify(aluno));
+            const estabelecimento = await Estabelecimento.findOne({ where: { id } });
+            if (estabelecimento) {
+                await estabelecimento.destroy();
+                res.send('Estabelecimento deletado. :' + JSON.stringify(estabelecimento));
             } else {
                 res.status(404).send('Estabelecimento não encontrado.');
             }

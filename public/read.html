@@ -7,12 +7,29 @@
   </head>
   <body>
     <h1>Cadastro de Alunos</h1>
+    <form id="search-form">
+      <label for="escola">Escola:</label>
+      <input type="text" id="escola" name="escola">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome">
+      <label for="idade">Idade:</label>
+      <input type="number" id="idade" name="idade">
+      <button type="submit">Buscar</button>
+    </form>
     <div id="alunos"></div>
     <script>
-      async function loadAlunos() {
-        const response = await fetch('http://localhost:3000/cadastroAlunos/');
+      const searchForm = document.getElementById('search-form');
+      const alunosDiv = document.getElementById('alunos');
+
+      searchForm.addEventListener('submit', async (event) => {
+        event.preventDefault(); // impede o envio do formulário
+        const escola = document.getElementById('escola').value;
+        const nome = document.getElementById('nome').value;
+        const idade = document.getElementById('idade').value;
+        const queryString = `?escola=${escola}&nome=${nome}&idade=${idade}`;
+        const response = await fetch(`http://localhost:3000/cadastroAlunos/busca${queryString}`);
         const alunos = await response.json();
-        const alunosDiv = document.getElementById('alunos');
+        alunosDiv.innerHTML = ''; // limpa a lista de alunos
         alunos.forEach(aluno => {
           const alunoDiv = document.createElement('div');
           alunoDiv.classList.add('aluno');
@@ -28,7 +45,7 @@
           `;
           alunosDiv.appendChild(alunoDiv);
         });
-      }
+      });
 
       async function deleteAluno(id) {
         const response = await fetch(`http://localhost:3000/cadastroAlunos/${id}`, {
@@ -40,9 +57,6 @@
         //
         location.reload(); // recarrega a página para atualizar a lista de alunos
       }
-
-
-      loadAlunos();
     </script>
   </body>
 </html>
