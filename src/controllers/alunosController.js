@@ -13,36 +13,39 @@ class alunosController {
     }
 
     static async find(req, res) {
-        const { escola, nome, idade} = req.query;
-        //      Se         // Isso  : senão isso ;
-        const escolaBusca = escola + "%";
-        const nomeBusca = nome + "%";
-        const idadeBusca = idade + "%";
-
-        console.log("Buscando por : " + escola, nome, idade);
+        const { escola, nome, idade, genero,situacaoFinal } = req.query;
+        console.log(escola, nome, idade, genero,situacaoFinal );
+      
         try {
-            const alunos = await Aluno.findAll({
-                include: [{
-                    model: Estabelecimento,
-                    where: {
-                        nomeEstabelecimento: {
-                            [Op.like]: escolaBusca
-                        }
-                    }
-                }],
-                where: {
-                    nome: {
-                        [Op.like]: nomeBusca
-                    }, idade: {
-                        [Op.like]: idadeBusca
-                    }
-                }
-            });
-            res.status(200).json(alunos);
-        } catch (err) {
-            res.status(500).json({ error: err.message });
+          const alunos = await Aluno.findAll({
+            include: {
+              model: Estabelecimento,
+              where: {
+                nomeEstabelecimento: {
+                  [Op.like]: `${escola}%`,
+                },
+              },
+            },
+            where: {
+              nome: {
+                [Op.like]: `${nome}%`,
+              },
+              idade: {
+                [Op.like]: `${idade}%`,
+              },
+              genero: {
+                [Op.like]: `${genero}%`, 
+              },             
+              situacaoFinal: {
+                [Op.like]: `${situacaoFinal}%`,
+              },
+            },
+          });
+          res.status(200).json(alunos);
+        } catch (error) {
+          res.status(500).json({ error: error.message });
         }
-    }
+      }
 
 
     static async readById(req, res) {
