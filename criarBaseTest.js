@@ -57,7 +57,7 @@ const escolaA = await Estabelecimento.create({
   ano: "2023"
   });
   
-  const ana = await Aluno.create({
+  const ana2 = await Aluno.create({
   nome: "Ana Silva",
   genero: "Feminino",
   dataDeNascimento: "2008-05-10",
@@ -146,6 +146,94 @@ const guilherme = await Aluno.create({
   idEstabelecimento: escolaE.id
 });
 
+
+const maria2 = await Aluno.create({
+  nome: "Maria Santos",
+  genero: "Feminino",
+  dataDeNascimento: "2005-05-01",
+  idade: 17,
+  disciplina: "Matemática",
+  nota: 9.5,
+  situacaoFinal: "Aprovado",
+  idEstabelecimento: escolaA.id
+  });
+  
+  const joao2 = await Aluno.create({
+  nome: "João Silva",
+  genero: "Masculino",
+  dataDeNascimento: "2004-09-10",
+  idade: 18,
+  disciplina: "Física",
+  nota: 7.0,
+  situacaoFinal: "Reprovado",
+  idEstabelecimento: escolaB.id
+  });
+  
+  const ana = await Aluno.create({
+  nome: "Ana Castro",
+  genero: "Feminino",
+  dataDeNascimento: "2003-12-25",
+  idade: 19,
+  disciplina: "História",
+  nota: 6.5,
+  situacaoFinal: "Reprovado",
+  idEstabelecimento: escolaC.id
+  });
+  
+  const felipe = await Aluno.create({
+  nome: "Felipe Santos",
+  genero: "Masculino",
+  dataDeNascimento: "2005-06-12",
+  idade: 16,
+  disciplina: "Biologia",
+  nota: 8.5,
+  situacaoFinal: "Aprovado",
+  idEstabelecimento: escolaD.id
+  });
+  
+  const carla = await Aluno.create({
+  nome: "Carla Souza",
+  genero: "Feminino",
+  dataDeNascimento: "2004-02-28",
+  idade: 18,
+  disciplina: "Geografia",
+  nota: 7.0,
+  situacaoFinal: "Reprovado",
+  idEstabelecimento: escolaE.id
+  });
+  
+  const pedro2 = await Aluno.create({
+  nome: "Pedro Costa",
+  genero: "Masculino",
+  dataDeNascimento: "2003-03-15",
+  idade: 19,
+  disciplina: "Português",
+  nota: 6.0,
+  situacaoFinal: "Reprovado",
+  idEstabelecimento: escolaA.id
+  });
+  
+  const luana = await Aluno.create({
+  nome: "Luana Oliveira",
+  genero: "Feminino",
+  dataDeNascimento: "2005-11-22",
+  idade: 16,
+  disciplina: "Inglês",
+  nota: 8.0,
+  situacaoFinal: "Aprovado",
+  idEstabelecimento: escolaB.id
+  });
+  
+  const lucas2 = await Aluno.create({
+  nome: "Lucas Santos",
+  genero: "Masculino",
+  dataDeNascimento: "2004-04-30",
+  idade: 18,
+  disciplina: "Química",
+  nota: 7.5,
+  situacaoFinal: "Reprovado",
+  idEstabelecimento: escolaC.id
+  });
 
 // Aluno.create({
 //   nome: "Luiza Souza",

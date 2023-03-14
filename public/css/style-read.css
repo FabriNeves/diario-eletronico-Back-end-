@@ -10,6 +10,38 @@ h1 {
     margin-bottom: 20px;
 }
 
+ /* Define um estilo básico para os rótulos dos campos do formulário */
+ label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  /* Define um estilo básico para os campos de entrada do formulário */
+  input, select {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Define um estilo para o botão de envio */
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  /* Define um estilo para o botão de envio quando o mouse estiver sobre ele */
+  input[type="submit"]:hover {
+    background-color: #2E8B57;
+  }
+
 .aluno {
     background-color: #f9f9f9dc;
     border: 1px solid #ddd;
