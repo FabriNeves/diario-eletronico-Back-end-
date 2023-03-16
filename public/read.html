@@ -38,8 +38,7 @@
     const alunosDiv = document.getElementById('alunos');
 
     searchForm.addEventListener('submit', async (event) => {
-      event.preventDefault(); // impede o envio do formulário
-      event.preventDefault();
+      event.preventDefault(); // impede o envio do formulário      
 
       const formData = new FormData(event.target);
       const queryString = new URLSearchParams(formData).toString();
